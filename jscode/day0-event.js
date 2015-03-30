@@ -23,5 +23,7 @@ $(document).ready(function () {
         $('#switcher button').toggleClass('hidden');
         //event.stopPropagation();
         //event.preventDefault();
+
+        //捕获键盘和用户点击操作  $(doctument).keyup()   .click .trigger('click')  删除事件off 捕获事件on() 使用命名空间增加准确度
     }) ;
 });
