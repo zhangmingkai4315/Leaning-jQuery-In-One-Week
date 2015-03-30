@@ -1,5 +1,5 @@
 body {
-    background-color: grey;
+    background-color: white;
     color: #000;
     font-family: Helvetica, Arial, sans-serif;
 }
@@ -15,4 +15,32 @@ h1, h2, h3 {
     font-style: italic;
     margin: 0.5em 0;
     padding: 0.5em;
+}
+.horizontal{
+    float: left;
+    list-style:none;
+    margin:10px;
+}
+
+tr{
+    background-color: #ff1;
+}
+.alt{
+    background-color: wheat;
+}
+.mark{
+    font-style: italic;
+}
+.nextmark{
+    font-size: small;
+}
+
+body.large,.chapter {
+    font-size: 2em;
+}
+body.narrow{
+    font-size: 1em;
+}
+.hidden{
+    display: none;
 }
