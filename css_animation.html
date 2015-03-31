@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <script>
+     $(document).ready(function () {
+         //第一次尝试
+//         $('#switch-Big').on('click', function () {
+//             var $speech=$("#speech > p");
+//             var number=parseFloat($speech.css('fontSize'));
+//             number*=1.5;
+//             $speech.css("fontSize",number);
+//
+//         });
+//         $('#switch-Small').on('click', function () {
+//             var $speech=$("#speech > p");
+//             var number=parseFloat($speech.css('fontSize'));
+//             number/=1.5;
+//             $speech.css("fontSize",number);
+//
+//         });
+         //第二次尝试
+         var $speech=$('#speech');
+
+         $('#switch button').on('click', function () {
+            var number=parseFloat($speech.css('fontSize'));
+             if(this.id=="switch-Big")
+                 $speech.animate({"fontSize":number*1.5},"slow");
+             else if(this.id=="switch-Small")
+                 $speech.animate({"fontSize":number/1.5},"slow");
+             else{
+                 $speech.css("fontSize",parseFloat($('.laber').css('fontSize')));
+             }
+         });
+         $('#speech >p').eq(1).hide();
+         $("a.more").click(function (event) {
+             event.preventDefault();
+             $(this).prev().animate({
+                 opacity:'toggle',
+                 height:"toggle"
+             },"slow");
+             if($(this).html()=="Close") {
+                //slideToggle 效果明显好于其他的两种，不会出现卡顿的现象
+                // $(this).prev().hide("fast");
+                // $(this).prev().fadeOut("slow");
+                // $(this).prev().slideToggle("fast");
+
+
+                 $(this).html("Read More");
+             }else {
+
+                 //$(this).prev().show("fast");
+                 //$(this).prev().fadeIn("slow");
+                // $(this).prev().slideToggle("fast");
+
+                 $(this).html("Close");
+             }
+         });
+         $("div.laber").click(function () {
+             var paraWidth=$('div#speech>p').outerWidth();
+             var $switcher=$(this).parent();
+             var switcherWidth=$switcher.outerWidth();
+            //并发操作
+//             $switcher.animate({
+//                 borderWidth:'5px',
+//                 height:"+=20px",
+//                 left:'+=20px'
+//             },'slow');
+             //串行操作
+//             $switcher.animate({left:'+=20px'},"slow");
+//             $switcher.animate({height:'+=20px'},'slow');
+
+             //增加一些动画：
+             //$switcher.fadeTo('fast',0.5).animate({left:'+=20px'},"slow").fadeTo('slow',1).slideUp('slow').slideDown("slow");
+             //队列
+             //$switcher.fadeTo('fast',0.5).animate({left:'+=20px'},"slow").css("background-color","red").fadeTo('slow',1);
+             $switcher.fadeTo('fast',0.2).animate({left:'+=20px'},"slow").queue(function (next) {
+                 $switcher.css('background-color',"red");
+                 next();
+             }).fadeTo('slow',1);
+         });
+
+
+
+     })
+    </script>
+    <title>CSS and Animation</title>
+    <style>
+        #switch{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="switch">
+    <div class="laber">Text Size</div>
+    <button id="switch-Default">Default</button>
+    <button id="switch-Big">Bigger</button>
+    <button id="switch-Small">Smaller</button>
+</div>
+<div id="speech" style="border: dotted">
+    <p>Hello everyone this is a speech part!</p>
+
+    <p>With eight states and the capital Abuja declared, President Jonathan's People's Democratic Party (PDP) has a lead of about 20,000 votes.
+        Final results in the closely contested poll are due Tuesday.</p>
+    <a href="#" class="more">Read More!</a>
+
+</div>
+</body>
+</html>
