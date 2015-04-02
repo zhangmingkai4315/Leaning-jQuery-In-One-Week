@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <script>
+        //事件委托
+        $(document).ready(function() {
+            $('body').on('click', 'h3.term', function() {
+                $(this).siblings('.definition').slideToggle();
+            });
+
+        });
+
+
+
+        //绑定搜索,延迟加载
+
+        $(document).ready(function(){
+            var $ajaxForm=$('#ajaxForm');
+            var searchTimeOut,searchDelay=300;
+
+
+
+            function ajaxFunction(requestData){
+               return function(){
+                $.get('e.php',requestData,function(data){
+                            $('#dictionary').html(data);
+                        }).fail(function(jqXHR){
+                            $('#dictionary').html('Error:'+jqXHR.status).append(jqXHR.responseText);
+                        });
+                };
+            }
+
+            $('#wordinput').on('keyup',function(event){
+                clearTimeout(searchTimeOut);
+                var requestData={term:$(this).val()};
+                //alert(requestData);
+
+
+                searchTimeOut=setTimeout(ajaxFunction(requestData),searchDelay);
+            });
+        });
+
+
+
+
+        //生成ajax请求
+
+        $(document).ready(function(){
+            $('a').click(function(event){
+                event.preventDefault();
+
+                var requestData={term:$(this).text()};
+
+                $.get('e.php',requestData,function(data){
+                    $('#dictionary').html(data);
+                 }).fail(function(jqXHR){
+                    $('#dictionary').html('Error:'+jqXHR.status).append(jqXHR.responseText);
+                });
+            }) ;
+        });
+    </script>
+    <title>Ajax 使用</title>
+</head>
+<body>
+<form id="ajax-form" action="e.php" method="get">
+    <input id="wordinput" type="text" name="word">
+
+</form>
+
+
+
+
+<div class="letter" id="letter-e">
+    <h3>E</h3>
+    <ul>
+        <li><a href="e.php?term=Eavesdrop">Eavesdrop</a></li>
+        <li><a href="e.php?term=Edible">Edible</a></li>
+        <li><a href="e.php?term=Education">Education</a></li>
+        <li><a href="e.php?term=Eloquence">Eloquence</a></li>
+        <li><a href="e.php?term=Elysium">Elysium</a></li>
+
+    </ul>
+</div>
+<div id="dictionary"></div>
+
+</body>
+</html>
