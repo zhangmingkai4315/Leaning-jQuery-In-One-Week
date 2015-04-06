@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <title></title>
+    <script>
+        //每个jQuery对象都保存着一个prevObject属性指向的一个对象，就像是实现了栈的列表结构，每个遍历方法都会找到一组新元素，
+        $(document).ready(function() {
+            //var $cell = $('.release');
+            //nextAll返回找到的后面的所有符合元素
+            //var $cell = $('.release').nextAll();
+            //使用新的addBack函数可以回溯一个位置并将现在的和之前的结合在一起
+            var $cell = $('.release').nextAll().addBack();
+            $cell.addClass('highlight');
+            console.log($cell.context);
+            console.log($cell.selector);
+            console.log($cell.prevObject);
+        });
+          //对于遍历的性能问题：1，使用连缀，2 使用缓存对象
+
+             $('#news').find('tr.alt').removeClass('alt').end().find('tbody').each(function() {
+                    $(this).children(':visible').has('td')
+                            .filter(':group(3)').addClass('alt');
+                });
+
+        //上例中使用了连缀和栈的概念： 首先查找id 为news的对象 并查询其中为<tr class="alt">的元素 并移除类 之后使用栈返回到new
+        //对象上后查找tbody元素并调用了each操作每个找到的tbody元素：针对每个tbody调用时候使用children获得每个子元素属性为visible
+        //拥有td元素并过滤
+
+        //使用缓存可将元素保存下来以备将来使用
+        var news=$("#news");
+
+
+
+    </script>
+    <style>
+        .highlight{
+            background-color: #ffff11;
+        }
+    </style>
+</head>
+<body>
+<div class="release">
+    <p>Hello world</p>
+</div>
+<div class="release">
+    <p>Hello world</p>
+</div>
+</body>
+</html>

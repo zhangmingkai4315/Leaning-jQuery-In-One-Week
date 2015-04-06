@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91092717-607f-4ad5-b4bf-a60aa37411bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/high-level-ajax.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dom.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/high-level-ajax.html" afterPath="$PROJECT_DIR$/high-level-ajax.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Leaning-jQuery-In-One-Week.iws" />
@@ -47,11 +48,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="high-level-ajax.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="high-level-ajax.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/high-level-ajax.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5834684" vertical-offset="0" max-vertical-offset="765">
-              <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+            <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="825">
+              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dom.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dom.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.397351" vertical-offset="0" max-vertical-offset="840">
+              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -102,8 +113,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="Macphp" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="676" />
-    <option name="y" value="172" />
+    <option name="x" value="795" />
+    <option name="y" value="103" />
     <option name="width" value="1171" />
     <option name="height" value="759" />
   </component>
@@ -264,7 +275,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="676" y="172" width="1171" height="759" extended-state="0" />
+    <frame x="795" y="103" width="1171" height="759" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -573,8 +584,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/high-level-ajax.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5834684" vertical-offset="0" max-vertical-offset="765">
-          <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+        <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="825">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dom.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.397351" vertical-offset="0" max-vertical-offset="840">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
           <folding />
         </state>
       </provider>

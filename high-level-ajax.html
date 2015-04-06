@@ -13,13 +13,17 @@
                 //$response.load('http://api.jquery.com/#content',$ajaxForm.serialize());
                 //serialize 将序列化用户的请求成如下的格式 如果表单元素有两个inputusername=zhangmingkai&password=123456
                 $.ajax({
-                    url:"http://book.learningjquery.com/api/",
+                    url:"http://api.jquery.com/",
                     dataType:'jsonp',
                     data:{
                         title:$('#title').val()
                     },
+                    timeout:15000,
                     success: function (data) {
-                        cosole.log(data);
+                        $response.html(data);
+                    },
+                    error: function (failed) {
+                      $response.html(failed);
                     }
                 });
             });
