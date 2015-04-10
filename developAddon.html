@@ -19,9 +19,48 @@
                     total+=value;
                 });
                 return total;
-            }
+            };
+            $.average = function (array) {
+                if($.isArray(array)){
+                   return $.sumFunctionArray(array)/array.length;
+                }
+            };
         })(jQuery);
     </script>
+
+   <!--第二种自定义函数的方式：-->
+
+    <script>
+        (function($){
+            $.extend({
+               sum1: function () {
+
+               },
+                average1: function () {
+
+                }
+            });
+        })(jQuery);
+    </script>
+    <!--第三种定义函数的方式-->
+    <script>
+        (function ($) {
+            $.mathUtils={
+                sum2:function(array){
+
+                },
+                average2: function () {
+
+                }
+            }
+
+        })(jQuery);
+
+//        调用时需要包含命名空间
+//        $.mathUtils.sum2();
+
+    </script>
+
     <!--调用自己的函数-->
     <script>
        // $.sumFunction()
