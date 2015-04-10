@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Develop Addon</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <!--定义自己的函数库和方法-->
+    <script>
+        (function ($) {
+            $.sumFunction= function () {
+                alert("Hello test");
+            };
+            $.sumFunctionArray=function(array){
+                var total=0;
+                $.each(array, function (index,value) {
+                    value= $.trim(value);
+                    value=parseFloat(value);
+
+                    total+=value;
+                });
+                return total;
+            }
+        })(jQuery);
+    </script>
+    <!--调用自己的函数-->
+    <script>
+       // $.sumFunction()
+        var array=new Array();
+       array[0]=10;
+       array[1]=11;
+       array[2]=34;
+        alert($.sumFunctionArray(array));
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+</body>
+</html>
