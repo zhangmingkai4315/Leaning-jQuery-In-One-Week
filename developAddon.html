@@ -60,7 +60,6 @@
 //        $.mathUtils.sum2();
 
     </script>
-
     <!--调用自己的函数-->
     <script>
        // $.sumFunction()
@@ -68,11 +67,61 @@
        array[0]=10;
        array[1]=11;
        array[2]=34;
-        alert($.sumFunctionArray(array));
+      //  alert($.sumFunctionArray(array));
     </script>
+
+
+    <!--以上为自定义的jQuery全局函数-->
+    <!--以下为定义实例方法-->
+    <!--fn为jQuery的prototype函数别名-->
+    <script>
+        jQuery.fn.myMethod=function(){
+            alert("My method");
+        }
+    </script>
+    <script>
+        $("div").myMethod();
+    </script>
+
+
+    <!--jQuery隐式迭代-->
+    <script>
+        (function ($) {
+            $.fn.swapClass= function (class1,class2) {
+                this.each(function(){
+                   var $element=$(this);
+                    if($element.hasClass(class1)){
+                        $element.removeClass(class1).addClass(class2);
+                    }else if($element.hasClass(class2)){
+                        $element.removeClass(class2).addClass(class1);
+                    }else{
+                        $element.addClass(class1);
+                    }
+
+                });
+            }
+        })(jQuery);
+        function change(){
+            $("div").swapClass("class1","class2");
+        }
+
+    </script>
+
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style>
+        .class1{
+            color: #ffff11;
+        }
+        .class2{
+            color: aqua;
+        }
+    </style>
+
 </head>
 <body>
-
+<div>
+    <h1>Hello jQuery</h1>
+    <button onclick="change()">Change</button>
+</div>
 </body>
 </html>
