@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Javascript Reg example</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            var text0="hello world";
+            var reg0=/\w+/g;
+            //不加/g时候不会两者基本相同，加入/g后 match匹配更多的范围并返回一个数组，不会受捕获分组影响
+            var value0=text0.match(reg0);
+            alert(value0);
+            //exec返回第一个满足的元素如果不用捕获对象的话 返回为单个元素
+            value0=reg0.exec(text0);
+            alert(value0);
+
+
+
+            var text="Ubuntu 10";
+            var reg1=/^[a-z]+\s+\d+$/i;
+            var value1=reg1.exec(text);
+            $("#answer1").html(value1);
+
+            var text2="Ubuntu 10.04";
+            var reg2=/^[a-z]+\s+(\d+)\.(\d+)$/i;
+            var value2=reg2.exec(text2);
+            $("#answer2").html(value2[0]);
+            //value[1]=10 value[2]=04
+
+            //惰性与贪婪捕获
+
+            var text3="abcdefg";
+            var reg3=/\w+/;
+            var reg3_lazy=/\w+?/;
+            var value3=reg3.exec(text3);
+            var value3_lazy=reg3_lazy.exec(text3);
+            $("#answer3").html("Default:"+value3+" Lazy:"+value3_lazy);
+
+            //捕获型分组与非捕获性分组
+
+            var text4="1234 21";
+            var reg4=/(\d+)+\s+(\d+)/;
+            var value4=text4.replace(reg4,"$2 $1");
+            $("#answer4").html(value4);
+
+//           非捕获性
+            var str='#123456';
+            var oReg=/#(?:\w+)/;
+            if(oReg.test(str))
+            {
+                $("#answer5").html("捕获成功");
+            }
+
+
+        });
+    </script>
+</head>
+<body>
+<div id="answer">
+    <p>exec永远返回与第一个匹配相关的信息，其返回数组包括第一个匹配的字串，所有分组的反向引用。</p>
+    <p>match是返回所有匹配的字符串合成的数组，但是正则表达式必须指定全局g属性才能返回所有匹配，不指定g属性则会返回一个只有一个元素的数组。</p>
+    <p></p>
+    <code>
+        var text="Ubuntu 10";<br>
+        var reg1=/^[a-z]+\s+\d+$/i;<br>
+        var value1=reg1.exec(text);
+    </code>
+    <p id="answer1"></p>
+    <code>
+        var text2="Ubuntu 10.04";<br>
+        var reg2=/^[a-z]+\s+(\d+)\.(\d+)$/i;<br>
+        var value2=reg2.exec(text2);<br>
+        $("#answer2").html(value2[0]);<br>
+        //value[1]=10 value[2]=04
+    </code>
+    <p id="answer2"></p>
+
+    <code>
+        //惰性与贪婪捕获<br>
+
+        var text3="abcdefg";<br>
+        var reg3=/\w+/;<br>
+        var reg3_lazy=/\w+?/;<br>
+        var value3=reg3.exec(text3);<br>
+        var value3_lazy=reg3_lazy.exec(text3);<br>
+        $("#answer3").html("Default:"+value3+" Lazy:"+value3_lazy);
+    </code>
+
+    <p id="answer3"></p>
+
+    //捕获型分组与非捕获性分组<br>
+
+    var text4="1234 21";<br>
+    var reg4=/(\d+)+\s+(\d+)/;<br>
+    var value4=text4.replace(reg4,"$2 $1");<br>
+    $("#answer4").html(value4);<br>
+
+    <p id="answer4"></p>
+
+    <p id="answer5"></p>
+
+
+</div>
+</body>
+</html>
